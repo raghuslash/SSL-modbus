@@ -37,12 +37,12 @@ bool ModbusSerial::config(HardwareSerial* port, long baud, int txPin) {
   // an inter-character must be 1.5T or 1.5 times longer than a character. Thus
   // 1.5T = 1.14583ms * 1.5 = 1.71875ms. A frame delay is 3.5T.
   // Thus the formula is T1.5(us) = (1000ms * 1000(us) * 1.5 * 11bits)/baud
-  // 1000ms * 1000(us) * 1.5 * 11bits = 16500000 can be calculated as a constant
+  // 1000ms * 1000(us) * 1.5 * 11bits = 21000000 can be calculated as a constant
 
   if (baud > 19200)
   _t15 = 750;
   else
-  _t15 = 16500000/baud; // 1T * 1.5 = T1.5
+  _t15 = 21000000/baud; // 1T * 1.5 = T1.5
 
   /* The modbus definition of a frame delay is a waiting period of 3.5 character times
   between packets. This is not quite the same as the frameDelay implemented in
@@ -74,7 +74,7 @@ bool ModbusSerial::config(HardwareSerial* port,
     if (baud > 19200)
     _t15 = 750;
     else
-    _t15 = 16500000/baud; // 1T * 1.5 = T1.5
+    _t15 = 21000000/baud; // 1T * 1.5 = T1.5
 
     _t35 = _t15 * 3.5;
 
@@ -98,7 +98,7 @@ bool ModbusSerial::config(HardwareSerial* port,
     if (baud > 19200)
     _t15 = 750;
     else
-    _t15 = 16500000/baud; // 1T * 1.5 = T1.5
+    _t15 = 21000000/baud; // 1T * 1.5 = T1.5
 
     _t35 = _t15 * 3.5;
 
@@ -121,7 +121,7 @@ bool ModbusSerial::config(HardwareSerial* port,
     if (baud > 19200)
     _t15 = 750;
     else
-    _t15 = 16500000/baud; // 1T * 1.5 = T1.5
+    _t15 = 21000000/baud; // 1T * 1.5 = T1.5
 
     _t35 = _t15 * 3.5;
 
